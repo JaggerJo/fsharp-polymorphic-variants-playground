@@ -4,9 +4,9 @@
 // Licensed under the Apache License 2.0: https://www.apache.org/licenses/LICENSE-2.0
 //
 // Changes: the files below are concatenated into one, in compile order. PlaceOrder.Implementation.fs
-// was a top-level module, so it is declared as a nested module with its body indented. The code itself
-// is unchanged. Not included: PlaceOrder.Dto.fs, PlaceOrder.Api.fs, AssemblyInfo.fs and
-// "PlaceOrder.Implementation(without effects).fs".
+// was a top-level module, so it is declared as a nested module with its body indented. Notes and
+// commented-out code for F# versions before 4.1 are removed. Not included: PlaceOrder.Dto.fs,
+// PlaceOrder.Api.fs, AssemblyInfo.fs and "PlaceOrder.Implementation(without effects).fs".
 
 // ==================================
 // Result.fs
@@ -20,17 +20,6 @@ open System
 // Helpers for Result type and AsyncResult type
 //==============================================
 
-// F# VERSION DIFFERENCE
-// The "Result" type is built-in to F# 4.1 and newer (from VS2017),
-// so uncomment the Result type if you are using an older version of F#
-
-(*
-/// The Result type represents a choice between success and failure
-type Result<'success, 'failure> =
-    | Ok of 'success
-    | Error of 'failure
-*)
-
 /// Functions for Result type (functor and monad).
 /// For applicatives, see Validation.
 [<RequireQualifiedAccess>]  // RequireQualifiedAccess forces the `Result.xxx` prefix to be used
@@ -43,30 +32,7 @@ module Result =
         | Error err -> onError err
 
 
-    // F# VERSION DIFFERENCE
-    // The `map`, `mapError` and `bind` functions are built-in to F# 4.1 and newer (from VS2017),
-    // so uncomment these if you are using an older version of F#
-    (*
-    let map f result =
-        match result with
-        | Ok success -> Ok (f success)
-        | Error err -> Error err
-
-    let mapError f result =
-        match result with
-        | Ok success -> Ok success
-        | Error err -> Error (f err)
-
-    let bind f result =
-        match result with
-        | Ok success -> f success
-        | Error err -> Error err
-    *)
-
-    // F# VERSION DIFFERENCE
-    // The `map`, `mapError` and `bind` functions are in a different module in F# 4.1 and newer (from VS2017),
-    // so these aliases make them available in this module.
-    // In older versions of F#, where the functions are defined above, please comment them out
+    // Aliases for the built-in functions, so that they are available in this module
     let map = Result.map
     let mapError = Result.mapError
     let bind = Result.bind
@@ -617,14 +583,6 @@ module ConstrainedType =
             let msg = sprintf "%s: '%s' must match the pattern '%s'" fieldName str pattern
             Error msg
 
-
-// F# VERSION DIFFERENCE
-// Modules with the same name as a non-generic type will cause an error in versions of F# before v4.1 (VS2017)
-// so change the module definition to include a [<CompilationRepresentation>] attribute like this:
-(*
-[<CompilationRepresentation(CompilationRepresentationFlags.ModuleSuffix)>]
-module String50 =
-*)
 
 module String50 =
 
