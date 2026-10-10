@@ -38,6 +38,7 @@ Hover over values in [Samples](Samples) to see the types the compiler infers:
 | [2-Types.fs](Samples/2-Types.fs) | named variant types, `#Type` patterns, upcasts, `[> ...]` and `[< ...]` annotations |
 | [3-Recursive.fs](Samples/3-Recursive.fs) | recursive variant types: an expression evaluator without a type declaration |
 | [4-Errors.fs](Samples/4-Errors.fs) | lines to uncomment, to see the errors |
+| [5-OrderTaking.Before.fs](Samples/5-OrderTaking.Before.fs) / [After.fs](Samples/5-OrderTaking.After.fs) | the same workflow without and with variants: no error types, no wrapping |
 
 `dotnet build` also writes every inferred signature to `obj/Inferred.fsi`.
 
