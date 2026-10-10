@@ -3,5 +3,7 @@
   // It is built from https://github.com/JaggerJo/fsharp/tree/poly-variants/.devcontainer/poly-variants
   "name": "F# polymorphic variants",
   "image": "ghcr.io/jaggerjo/fsharp-poly-variants-demo:latest",
+  // Root owns the checked-out workspace, so the editor can write to it
+  "remoteUser": "root",
   "postCreateCommand": "dotnet restore"
 }
