@@ -18,6 +18,7 @@
     <Compile Include="Samples/2-Types.fs" />
     <Compile Include="Samples/3-Recursive.fs" />
     <Compile Include="Samples/4-Errors.fs" />
+    <Compile Include="Samples/OrderTaking.Result.fs" />
     <Compile Include="Samples/OrderTaking.Original.fs" />
     <Compile Include="Samples/5-OrderTaking.fs" />
     <Compile Include="Program.fs" />
