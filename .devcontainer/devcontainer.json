@@ -1,0 +1,7 @@
+{
+  // The image brings the patched F# compiler, Ionide and a language server that understands polymorphic variants.
+  // It is built from https://github.com/JaggerJo/fsharp/tree/poly-variants/.devcontainer/poly-variants
+  "name": "F# polymorphic variants",
+  "image": "ghcr.io/jaggerjo/fsharp-poly-variants-demo:latest",
+  "postCreateCommand": "dotnet restore"
+}

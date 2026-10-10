@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net11.0</TargetFramework>
+    <LangVersion>preview</LangVersion>
+    <Nullable>disable</Nullable>
+    <!-- Use the compiler of a poly-variants checkout of dotnet/fsharp next to this folder, if there is one.
+         In the dev container the patched compiler comes from the DotnetFscCompilerPath environment variable. -->
+    <LocalPolyVariantsFsc>$(MSBuildThisFileDirectory)../fsharp/artifacts/bin/fsc/Debug/net11.0/fsc.dll</LocalPolyVariantsFsc>
+    <DotnetFscCompilerPath Condition="Exists('$(LocalPolyVariantsFsc)')">$(LocalPolyVariantsFsc)</DotnetFscCompilerPath>
+    <!-- Write the inferred signatures next to the build output, to see the rows the compiler infers -->
+    <OtherFlags>$(OtherFlags) --sig:$(MSBuildThisFileDirectory)obj/Inferred.fsi</OtherFlags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Samples/1-Tags.fs" />
+    <Compile Include="Samples/2-Types.fs" />
+    <Compile Include="Samples/3-Recursive.fs" />
+    <Compile Include="Samples/4-Errors.fs" />
+    <Compile Include="Program.fs" />
+  </ItemGroup>
+
+</Project>
